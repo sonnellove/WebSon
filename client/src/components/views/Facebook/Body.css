@@ -1,0 +1,37 @@
+.body__body {
+  display: flex;
+}
+
+.body__search {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .body__search > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+  }
+
+  .body__search {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    background-color: white;
+  }
+  .body__input {
+    display: flex;
+    align-items: center;
+    background-color: #eff2f5;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 999px;
+  }
+
+  .body__input > input {
+    border: none;
+    background-color: transparent;
+    outline-width: 0;
+  }
+
+}

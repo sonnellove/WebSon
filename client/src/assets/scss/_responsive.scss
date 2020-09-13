@@ -1,0 +1,66 @@
+// @media (max-width: 3100px) {
+//     .postPage {
+//         padding: 0 1rem 1em;
+//     }
+
+//     .uploadAdd {
+//         width: 300px;
+//         height: 240px;
+//     }
+
+//     .Video {
+//         width: 100%;
+//         /* min-height: inherit; */
+//         max-height: 30rem;
+//     }
+
+// }
+
+@include media-xml {
+    .postImage {
+        img{
+            width: 100% !important;
+    }
+    }
+
+    .app__Cover {
+
+        // height: 40vh !important;
+        p {
+            margin: -45px 0 0 0px !important;
+            max-height: 100%;
+        }
+
+        &__name {
+            font-size: 10px !important;
+            margin: 20vh 0 0 20% !important;
+
+            // margin-top: 20px;
+        }
+
+    }
+
+    // profile
+    .app__posts {
+        flex-flow: column;
+        align-items: center;
+        text-align: center;
+        // padding: 20px 0 !important;
+
+        // &__left {
+        //     .post {
+        //         width: fit-content !important;
+
+        //     }
+        // }
+    }
+
+    .app__posts__right {
+        // margin-left: 0 !important;
+
+        .RightPost {
+            width: initial !important;
+        }
+    }
+
+}

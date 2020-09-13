@@ -1,0 +1,11 @@
+.app {
+  background-color: #f1f2f5;
+  /* height: 100vh; */
+  /* width: fit-content; */
+}
+
+@media only screen and (max-width: 767px) {
+.app{
+  margin-top: 85px;
+}
+}

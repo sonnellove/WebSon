@@ -1,0 +1,27 @@
+.feed {
+  flex: 1;
+  padding: 30px 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* width: 80%; */
+}
+.feed__container {
+  width: 100%;
+}
+
+.LoadMore{
+    padding: 20px;
+}
+.LoadMore > button {
+    padding: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .feed {
+    padding: 0 !important;
+  }
+
+}

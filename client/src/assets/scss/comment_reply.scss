@@ -1,0 +1,36 @@
+.post__reply {
+    padding-left: 1rem;
+
+    .post__header {
+        display: flex;
+        width: inherit;
+        // background-color: pink;
+        width: max-content;
+    }
+
+    &_msg {
+        padding: 0 10px;
+    }
+}
+
+.post__comment {
+    .showReply {
+        display: flex;
+
+        .post-basic-message {
+            font-size: 12px;
+        }
+    }
+
+    .post__header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        // background-color: beige;
+        // width: max-content;
+    }
+
+    &_msg {
+        padding: 0 10px;
+    }
+}

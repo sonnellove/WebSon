@@ -1,0 +1,16 @@
+.postImage {
+    background-color: pink;
+    text-align: center;
+
+    img {
+
+        width: 500px;
+        object-fit: contain;
+    }
+
+    button {
+        position: fixed;
+        display: flex;
+        margin: -20px 0 0 0;
+    }
+}

@@ -1,0 +1,131 @@
+.app__Cover {
+    object-fit: contain;
+    // margin-top: -26px;
+    align-items: center;
+    text-align: center;
+
+    &__name {
+        font-size: 30px;
+        font-family: "Oswald";
+        /* font-weight: 900; */
+        line-height: 1.5;
+        letter-spacing: 4px;
+        object-fit: contain;
+        align-items: center;
+        text-align: center;
+        float: left;
+        margin-top: 40vh;
+        margin-left: 40px;
+        // padding: 2rem;
+
+        h1,
+        h2 {
+            color: orange;
+            line-height: 1.5;
+        }
+    }
+}
+
+.app__posts {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #000000;;
+    font-family: "Open Sans";
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: justify !important;
+
+    &__left {
+        .post {
+            max-width: 360px;
+            background-color: white;
+            border: 1px solid lightgray;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            .showComment {
+                float: right;
+
+            }
+
+            &__header {
+                display: flex;
+                align-items: center;
+                padding: 0 8px;
+
+                .post__avatar {
+                    margin-right: 10px;
+                    margin-left: 1px;
+
+                }
+
+                span {
+                    font-size: 10px;
+                    cursor: pointer;
+                    /* margin-bottom: -100px; */
+                    margin-left: -20px;
+                }
+            }
+
+            &__image {
+                width: 100%;
+                object-fit: contain;
+                border-top: 1px solid lightgray;
+                border-bottom: 1px solid lightgray;
+
+            }
+
+            &__text {
+                font-weight: normal;
+                padding: 0 20px 0;
+                overflow-wrap: break-word;
+            }
+
+            &__comment {
+                align-items: center;
+                // padding: 0 1rem;
+                // margin-top: -30px;
+                // text-indent: 20px;
+                // padding: .5rem 1rem 0 3.8rem;
+
+                &__container{
+                    margin-left: 25px;
+                }
+            }
+
+            &__reply {
+                align-items: center;
+                padding-left: 2.5rem;
+
+                // margin-top: -30px;
+                // text-indent: 20px;
+                // padding: 0 1rem 0 7rem;
+            }
+        }
+
+    }
+
+    &__right {
+        margin-left: 20px;
+
+        .RightPost {
+            width: 500px;
+            background-color: white;
+            border: 1px solid lightgray;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 0;
+
+
+            &__image {
+                width: 100%;
+                object-fit: contain;
+                border-top: 1px solid lightgray;
+                border-bottom: 1px solid lightgray;
+            }
+        }
+
+    }
+
+}
