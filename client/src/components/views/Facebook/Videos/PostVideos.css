@@ -70,7 +70,20 @@
 }
 
 .video {
-    width: 100%;
+  width: 100%;
+}
+
+.postVideos__delete {
+  margin-left: 150px;
+  margin-top: -20px;
+}
+
+.postVideos__delete > a {
+  cursor: pointer;
+}
+
+.postVideos__delete:hover {
+  color: red;
 }
 
 @media only screen and (max-width: 767px) {
@@ -78,6 +91,9 @@
     width: 100%;
   }
   .postVideos__options {
-    cursor: none !important; 
+    cursor: none !important;
+  }
+  .postVideos__delete {
+    margin-left: 54px;
   }
 }

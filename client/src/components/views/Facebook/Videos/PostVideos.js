@@ -2,15 +2,18 @@ import { Avatar, Button, Input } from "@material-ui/core";
 import ChatBubbleOutlinedIcon from "@material-ui/icons/ChatBubbleOutlined";
 import NearMeIcon from "@material-ui/icons/NearMe";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import io from 'socket.io-client';
+import { afterCommentVideoMessage } from "../../../../_actions/comment_actions";
+import { afterDeleteVideoMessage } from "../../../../_actions/video_action";
 import useInputHooks from "../../../Hooks/useInputHooks";
 import CommentsVideos from "./CommentsVideos";
 import "./PostVideos.css";
 
-const socket = io.connect(`http://192.168.43.36:5000/`)
-function PostVideos({ comments, user, profilePic, video, username, timestamp, message, videoId }) {
+function PostVideos({ userId, comments, user, profilePic, video, username, timestamp, message, videoId }) {
+  const dispatch = useDispatch();
   const [CommentHooks, setCommentHooks, resetCommentHooks] = useInputHooks("");
   const [OpenComment, setOpenComment] = useState(false);
   const [ChildCommentNumber, setChildCommentNumber] = useState(0);
@@ -34,7 +37,10 @@ function PostVideos({ comments, user, profilePic, video, username, timestamp, me
       content: CommentHooks,
     };
     if (variables.content !== "" && variables.writer) {
-      socket.emit('saveCommentVideos', variables)
+      Axios.post('/api/commentPost/saveCommentVideos', variables)
+        .then((res) => {
+          updateComment(res.data.result)
+        })
       resetCommentHooks();
     } else {
       alert("Login First")
@@ -43,7 +49,16 @@ function PostVideos({ comments, user, profilePic, video, username, timestamp, me
   const CommentOpen = () => {
     setOpenComment(!OpenComment);
   };
-
+  const updateComment = (messageFromBackEnd) => {
+    dispatch(afterCommentVideoMessage(messageFromBackEnd));
+  }
+  const DeleteHandler = (e) => {
+    e.preventDefault()
+    const variables = {
+      videoId: videoId
+    }
+    dispatch(afterDeleteVideoMessage(variables))
+  };
   return (
     <div className="postVideos">
       <div className="postVideos__top">
@@ -51,6 +66,11 @@ function PostVideos({ comments, user, profilePic, video, username, timestamp, me
         <div className="postVideos__topInfo">
           <h3>{username}</h3>
           <p>{new Date(timestamp).toUTCString()}</p>
+        </div>
+        <div className="postVideos__delete">
+          {user.userData.isAuth && userId === user.userData._id &&
+            < a onClick={DeleteHandler}>Delete Post</a>
+          }
         </div>
       </div>
 

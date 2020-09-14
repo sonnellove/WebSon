@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route path="/join" component={Auth(Join, null)} />
-          <Route path="/chat" component={Auth(ChatContainer, null)} />
+          {/* <Route path="/chat" component={Auth(ChatContainer, null)} /> */}
           {/* <Route exact path="/image/:postId" component={Auth(PostImage, null)} /> */}
         </Switch>
       </Suspense>

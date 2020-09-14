@@ -20,7 +20,7 @@ function Comments({ user, postId, posts, comments }) {
           <div className="comment__container">
             <div className="comment__post">
               <div className="comment__header">
-                <Link to={`/profile/${comment.writer._id}`}><Avatar src={`http://192.168.43.36:5000/${comment.writer.profile}`} className="comment__avatar" /></Link>
+                <Link to={`/profile/${comment.writer._id}`}><Avatar src={`localhost:5000/${comment.writer.profile}`} className="comment__avatar" /></Link>
                 <div className="comment__topInfo">
                   <h3>{comment.writer.name} {comment.writer.lastname}</h3>
                   <p>{moment(comment.createdAt).format("MMM Do YY")}</p>

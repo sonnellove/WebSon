@@ -18,5 +18,5 @@ export const AFTER_COMMENT_MESSAGE = 'after_comment_message';
 export const GET_VIDEOS = 'get_video';
 export const AFTER_VIDEO_MESSAGE = 'after_video_message';
 export const AFTER_COMMENT_VIDEO_MESSAGE = 'after_comment_video_message';
-// export const AFTER_VIDEO_MESSAGE = 'after_video_message';
+export const AFTER_DELETEVIDEO_MESSAGE = 'after_deletevideo_message';
 

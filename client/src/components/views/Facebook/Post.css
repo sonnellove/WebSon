@@ -70,9 +70,26 @@
     flex: 1;
 }
 
+.post__delete{
+    margin-left: 150px;
+    margin-top: -20px;
+}
+
+.post__delete > a {
+    cursor: pointer;
+}
+
+.post__delete:hover{
+    color: red;
+}
+
 @media only screen and (max-width: 767px) {
     .post__options {
       cursor: none !important; 
     }
+    .post__delete {
+       
+        margin-left: 54px;
+      }
   }
   

@@ -2,17 +2,14 @@ import { Avatar } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import VideocamIcon from "@material-ui/icons/Videocam";
-import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import React, { useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import io from 'socket.io-client';
-import { afterPostMessage } from "../../../../_actions/post_action";
-import "./MessageSenderVideos.css";
 import { Link } from "react-router-dom";
+import { afterVideoMessage } from "../../../../_actions/video_action";
+import "./MessageSenderVideos.css";
 
-const socket = io.connect(`http://192.168.43.36:5000/`)
 function MessageSenderVideos({ user }) {
-  // console.log('==user')
-  // console.log(user)
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
@@ -32,28 +29,23 @@ function MessageSenderVideos({ user }) {
     } else if (variables.description === '') {
       alert('Fill in the blank')
     } else if (variables.writer && variables.description !== '') {
-      socket.emit('uploadVideofiles', variables)
+      Axios.post('/api/video/uploadVideofiles', variables)
+        .then((res) => {
+          updatePost(res.data.doc)
+        })
       setInput("")
       setVideoUrl("")
     }
   };
 
-  useEffect(() => {
-    socket.on("Output uploadVideofiles", messageFromBackEnd => {
-      console.log('messageFromBackEnd')
-      //   console.log(messageFromBackEnd)
-      //   updatePost(messageFromBackEnd)
-    })
-  }, [])
-
   const updatePost = (messageFromBackEnd) => {
-    dispatch(afterPostMessage(messageFromBackEnd));
+    dispatch(afterVideoMessage(messageFromBackEnd));
   }
 
   return (
     <div className="messageSenderVideos">
       <div className="messageSenderVideos__top">
-      {user.userData && <Link to={`/profile/${user.userData._id}`}><Avatar src={user.userData.image} /></Link>}
+        {user.userData && <Link to={`/profile/${user.userData._id}`}><Avatar src={user.userData.image} /></Link>}
         <form>
           <input
             className="messageSenderVideos__input"

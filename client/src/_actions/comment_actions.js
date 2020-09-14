@@ -14,8 +14,7 @@ export function getComments() {
 }
 
 export function afterCommentMessage(data) {
-    // console.log('****afterPostMessage')
-    // console.log(data)
+
     return {
         type: AFTER_COMMENT_MESSAGE,
         payload: data
@@ -23,8 +22,7 @@ export function afterCommentMessage(data) {
 }
 
 export function afterCommentVideoMessage(data) {
-    // console.log('****afterPostMessage')
-    // console.log(data)
+
     return {
         type: AFTER_COMMENT_VIDEO_MESSAGE,
         payload: data

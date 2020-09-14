@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from "react-redux"
-import io from 'socket.io-client'
 import { afterCommentMessage, getComments } from '../../../_actions/comment_actions'
 import { afterPostMessage, getPosts } from '../../../_actions/post_action'
 import './Feed.css'
@@ -9,7 +8,6 @@ import MessageSender from './MessageSender'
 import Post from './Post'
 
 
-const socket = io.connect(`http://192.168.43.36:5000/`)
 function Feed({ comments, posts, user }) {
     const dispatch = useDispatch();
     const [PostSize, setPostSize] = useState()
@@ -21,25 +19,12 @@ function Feed({ comments, posts, user }) {
 
     useEffect(() => {
         dispatch(getComments());
-        socket.on('saveComment', messageFromBackEnd => {
-            updateComment(messageFromBackEnd);
-        })
-
-        socket.on("Output uploadfiles", messageFromBackEnd => {
-            console.log('messageFromBackEnd')
-            console.log(messageFromBackEnd)
-            updatePost(messageFromBackEnd)
-        })
         const variables = {
             skip: Skip,
             limit: Limit
         }
         getPost(variables);
-        return () => {
-            // socket.emit('disconnect')
-            console.log('DISCONNECTED POST')
-            socket.off();
-        }
+
     }, [])
 
     const updateComment = (messageFromBackEnd) => {
@@ -96,12 +81,12 @@ function Feed({ comments, posts, user }) {
 
                         <Post
                             comments={comments}
-                            user={user}
                             username={post.writer.name}
                             profilePic={post.writer.image}
                             message={post.description}
                             timestamp={post.createdAt}
                             image={post.images}
+                            user={user}
                             postId={post._id}
                             userId={post.writer._id}
                         />

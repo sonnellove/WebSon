@@ -4,6 +4,29 @@ const { auth } = require("../middleware/auth");
 const { Video } = require("../models/Video")
 const multer = require('multer');
 
+router.post("/uploadVideofiles", auth, (req, res) => {
+
+    let variable = {};
+    if (req.body.videos) {
+        variable = { writer: req.body.writer, description: req.body.description, videos: req.body.videos }
+    } else {
+        variable = { writer: req.body.writer, description: req.body.description }
+    }
+    let video = new Video(variable)
+
+    video.save((err, doc) => {
+        if (err) return res.json({ success: false, err })
+
+        Video.find({ "_id": doc._id })
+            .populate("writer")
+            .exec((err, doc) => {
+                if (err) return res.json({ success: false, err })
+
+                return res.status(200).json({ success: true, doc })
+            })
+    })
+})
+
 router.post("/getVideos", (req, res) => {
 
     let order = "desc";
@@ -35,5 +58,13 @@ router.post("/getVideos", (req, res) => {
             })
     }
 })
+
+router.post("/deleteOnePostVideos", (req, res) => {
+    Video.findByIdAndDelete({ '_id': req.body.videoId })
+        .exec((err, video) => {
+            res.status(200).json({ success: true, video })
+        })
+})
+
 
 module.exports = router;

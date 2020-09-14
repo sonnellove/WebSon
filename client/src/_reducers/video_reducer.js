@@ -1,16 +1,14 @@
-import { AFTER_VIDEO_MESSAGE, GET_VIDEOS } from '../_actions/types';
+import { AFTER_DELETEVIDEO_MESSAGE, AFTER_VIDEO_MESSAGE, GET_VIDEOS } from '../_actions/types';
 
 export default function (state = {}, action) {
     switch (action.type) {
         case GET_VIDEOS:
-            // console.log('GET_VIDEOS')
-            // console.log(action.payload)
+
             return { ...state, videos: action.payload.video, success: action.payload.success, postSize: action.payload.postSize }
         case AFTER_VIDEO_MESSAGE:
-            // console.log('AFTER_VIDEO_MESSAGE')
-            // console.log(state.videos)
-            // console.log(action.payload)
             return { ...state, videos: action.payload.concat(state.videos) }
+        case AFTER_DELETEVIDEO_MESSAGE:
+            return { ...state, videos: state.videos.filter(video => video._id !== action.payload.video._id) }
 
         default:
             return state;

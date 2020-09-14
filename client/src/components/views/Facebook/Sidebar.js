@@ -10,19 +10,19 @@ import './Sidebar.css';
 import SidebarRow from './SidebarRow/SidebarRow';
 
 function Sidebar() {
-  const Logo = require("../../../assets/images/Penguins.jpg");
+    const Logo = require("../../../assets/images/Penguins.jpg");
 
     return (
         <div className="sidebar">
-            <SidebarRow src={Logo} title="Nelson Fernadez"/>
-            <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center"/>
-            <SidebarRow Icon={EmojiFlagsIcon} title="Pages"/>
-            <SidebarRow Icon={PeopleIcon} title="Friends"/>
-            <SidebarRow Icon={ChatIcon} title="Messager"/>
-            <SidebarRow Icon={StorefrontIcon} title="Marketplace"/>
-            <SidebarRow Icon={VideoLibraryIcon} title="Videos"/>
-            <SidebarRow Icon={ExpandMoreOutlined} title="Marketplace"/>
-         
+            <SidebarRow src={Logo} title="Nelson Fernadez" />
+            <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center" />
+            <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
+            <SidebarRow Icon={PeopleIcon} title="Friends" />
+            <SidebarRow Icon={ChatIcon} title="Messager" />
+            <SidebarRow Icon={StorefrontIcon} title="Marketplace" />
+            <SidebarRow Icon={VideoLibraryIcon} title="Videos" />
+            <SidebarRow Icon={ExpandMoreOutlined} title="Marketplace" />
+
         </div>
     )
 }

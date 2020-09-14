@@ -12,16 +12,16 @@ const { Title } = Typography;
 function LoginPage(props) {
   const dispatch = useDispatch();
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
-  
+
   const [formErrorMessage, setFormErrorMessage] = useState('')
   const [rememberMe, setRememberMe] = useState(rememberMeChecked)
-  
+
   const inputRef = useRef(null)
-  
-	useEffect(() => {
-		inputRef.current.focus()
+
+  useEffect(() => {
+    inputRef.current.focus()
   }, [])
-  
+
   const handleRememberMe = () => {
     setRememberMe(!rememberMe)
   };
@@ -112,7 +112,7 @@ function LoginPage(props) {
                 <Input
                   id="password"
                   autoComplete="on"
-                  prefix={<LockOutlined  style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="Enter your password"
                   type="password"
                   value={values.password}
@@ -138,7 +138,7 @@ function LoginPage(props) {
                   </Link>
                 <div>
                   <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-                  <LoginOutlined /> Log in
+                    <LoginOutlined /> Log in
                 </Button>
                 </div>
                 Or <Link to='/register'>register now!</Link>

@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from "react-redux"
 import io from 'socket.io-client'
-import { afterPostMessage, getPosts } from '../../../../_actions/post_action'
+import { afterCommentVideoMessage, getComments } from '../../../../_actions/comment_actions'
+import { getPosts } from '../../../../_actions/post_action'
+import { afterVideoMessage, getVideos } from '../../../../_actions/video_action'
 import './FeedVideos.css'
-import StoryReel from '../Feed/StoryReel'
-import MessageSender from '../MessageSender'
-import PostVideos from './PostVideos'
-import Footer from '../Footer/Footer'
 import MessageSenderVideos from './MessageSenderVideos'
-import { afterCommentMessage, getComments, afterCommentVideoMessage } from '../../../../_actions/comment_actions'
-import { getVideos, afterVideoMessage } from '../../../../_actions/video_action'
+import PostVideos from './PostVideos'
 
 
-const socket = io.connect(`http://192.168.43.36:5000/`)
 function FeedVideos({ videos, comments, posts, user }) {
     const dispatch = useDispatch();
     const [PostSize, setPostSize] = useState()
@@ -25,28 +21,13 @@ function FeedVideos({ videos, comments, posts, user }) {
     useEffect(() => {
         dispatch(getVideos());
         dispatch(getComments());
-        console.log('--*****---')
-        socket.on('saveCommentVideos', messageFromBackEnd => {
-            console.log('--2---')
-            console.log(messageFromBackEnd)
-            updateComment(messageFromBackEnd);
-        })
 
-        socket.on("Output uploadVideofiles", messageFromBackEnd => {
-            console.log('messageFromBackEnd')
-            console.log(messageFromBackEnd)
-            updatePost(messageFromBackEnd)
-        })
         const variables = {
             skip: Skip,
             limit: Limit
         }
         getPost(variables);
-        return () => {
-            // socket.emit('disconnect')
-            console.log('DISCONNECTED POST')
-            socket.off();
-        }
+
     }, [])
 
     const updateComment = (messageFromBackEnd) => {
@@ -109,6 +90,7 @@ function FeedVideos({ videos, comments, posts, user }) {
                             timestamp={video.createdAt}
                             video={video.videos}
                             videoId={video._id}
+                            userId={video.writer._id}
                         />
                     </React.Fragment>
                 ))}

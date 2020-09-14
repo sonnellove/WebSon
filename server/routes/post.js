@@ -51,6 +51,29 @@ router.post("/uploadImage", auth, (req, res) => {
 //     })
 // })
 
+router.post("/uploadfiles", auth, (req, res) => {
+
+    let variable = {};
+    if (req.body.images) {
+        variable = { writer: req.body.writer, description: req.body.description, images: req.body.images }
+    } else {
+        variable = { writer: req.body.writer, description: req.body.description }
+    }
+    let post = new Post(variable)
+
+    post.save((err, doc) => {
+        if (err) return res.json({ success: false, err })
+
+        Post.find({ "_id": doc._id })
+            .populate("writer")
+            .exec((err, doc) => {
+                if (err) return res.json({ success: false, err })
+
+                return res.status(200).json({ success: true, doc })
+            })
+    })
+})
+///
 
 router.post("/getPosts", (req, res) => {
 
@@ -92,7 +115,7 @@ router.post("/profile", (req, res) => {
     let sortBy = "_id";
     let limit = req.body.limit ? parseInt(req.body.limit) : 100;
     let skip = parseInt(req.body.skip);
-    
+
     Post.find({ 'writer': req.body.writer })
         .populate('writer')
         .sort([[sortBy, order]])
@@ -135,40 +158,10 @@ router.post("/updateOnePost", (req, res) => {
 router.post("/deleteOnePost", (req, res) => {
     Post.findByIdAndDelete({ '_id': req.body.postId })
         .exec((err, post) => {
-            if (err) return res.status(400).send(err);
-            if (post) {
-
-                let order = "desc";
-                let sortBy = "_id";
-                let limit = req.body.limit ? parseInt(req.body.limit) : 100;
-                let skip = parseInt(req.body.skip);
-                let term = req.body.searchTerm;
-                let profileFolder = req.body.profileFolder;
-                let profile_id = req.body.profile_id
-
-
-
-                if (profileFolder) {
-                    Post.find({ 'writer': req.body.writer })
-                        .populate('writer')
-                        .exec((err, post) => {
-                            if (err) return res.status(400).send(err);
-                            res.status(200).json({ success: true, post })
-                        })
-                } else {
-                    Post.find({})
-                        .populate('writer')
-                        .sort([[sortBy, order]])
-                        .skip(skip)
-                        .limit(limit)
-                        .exec((err, post) => {
-                            if (err) return res.status(400).send(err);
-                            res.status(200).json({ success: true, post, postSize: post.length })
-                        })
-                }
-            }
+            res.status(200).json({ success: true, post })
         })
 })
+
 // router.post("/getOnePost", (req, res) => {
 //     
 //     Post.find({ '_id': req.body.postId })

@@ -8,13 +8,14 @@ import io from 'socket.io-client';
 import { afterPostMessage } from "../../../_actions/post_action";
 import "./MessageSender.css";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
-const socket = io.connect(`http://localhost:5000`)
 function MessageSender({ user }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -30,30 +31,16 @@ function MessageSender({ user }) {
     } else if (variables.description === '') {
       alert('Fill in the blank')
     } else if (variables.writer && variables.description !== '') {
-      socket.emit('uploadfiles', variables)
+      Axios.post('/api/post/uploadfiles', variables)
+      .then((res)=>{
+        updatePost(res.data.doc)
+      })
       setInput("")
       setImageUrl("")
     }
   };
 
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
-
-  useEffect(() => {
-    console.log("essssw")
-    socket.on("Output uploadfiles", messageFromBackEnd => {
-      // updatePost(messageFromBackEnd)
-      console.log("ew")
-      console.log(messageFromBackEnd)
-    })
-  }, [])
-
   const updatePost = (messageFromBackEnd) => {
-    console.log("updatePost")
     dispatch(afterPostMessage(messageFromBackEnd));
   }
 

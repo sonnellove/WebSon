@@ -1,7 +1,6 @@
 import { Avatar, IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FlagIcon from "@material-ui/icons/Flag";
 import ForumIcon from "@material-ui/icons/Forum";
 import HomeIcon from "@material-ui/icons/Home";
 import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
@@ -40,7 +39,6 @@ function Header({ history }) {
     setSkip(0)
     dispatch(getPosts(variables))
       .then((res) => {
-        console.log(res.payload)
         // if (res.payload.success) {
         //   if (variables.loadMore) {
         //     updatePost([...posts.posts]);

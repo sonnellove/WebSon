@@ -20,7 +20,7 @@ function CommentsVideos({ user, videoId, posts, comments }) {
           <div className="commentVideos__container">
             <div className="commentVideos__post">
               <div className="commentVideos__header">
-                <Link to={`/profile/${comment.writer._id}`}><Avatar src={`http://192.168.43.36:5000/${comment.writer.profile}`} className="commentVideos__avatar" /></Link>
+                <Link to={`/profile/${comment.writer._id}`}><Avatar src={`http://localhost:5000/${comment.writer.profile}`} className="commentVideos__avatar" /></Link>
                 <div className="commentVideos__topInfo">
                   <h3>{comment.writer.name} {comment.writer.lastname}</h3>
                   <p>{moment(comment.createdAt).format("MMM Do YY")}</p>

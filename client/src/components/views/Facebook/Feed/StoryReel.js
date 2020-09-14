@@ -8,18 +8,17 @@ function StoryReel() {
     return (
         <div className="storyReel">
             {/* Story */}
-            <Story image={image} profileSrc={profileSrc} title="Nelson Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="liza Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="cristel Fenandez"/>
-            <Story image={image} profileSrc={profileSrc} title="Nelson Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="liza Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="cristel Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="liza Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="cristel Fenandez"/>
-            <Story image={image} profileSrc={profileSrc} title="Nelson Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="liza Fenandez"/>
-            <Story image={profileSrc} profileSrc={image} title="cristel Fenandez"/>
-    </div>
+            <Story image={image} profileSrc={profileSrc} title="Nelson Fenandez" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 1" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 2" />
+            <Story image={image} profileSrc={profileSrc} title="Demo 3" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 4" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 5" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 6" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 7" />
+            <Story image={image} profileSrc={profileSrc} title="Demo 8" />
+            <Story image={profileSrc} profileSrc={image} title="Demo 9" />
+        </div>
     )
 }
 
