@@ -40,6 +40,21 @@ function MessageSender({ user }) {
     }
   };
 
+  const handleSubmitPhoto = (e) => {
+    e.preventDefault();
+    const variables = {
+      writer: user.userData._id,
+      description: input,
+      images: imageUrl
+    }
+
+    if (!variables.writer) {
+      alert('Login First')
+
+    }else{
+      alert('Under Maintenance')
+    }
+  }
   const updatePost = (messageFromBackEnd) => {
     dispatch(afterPostMessage(messageFromBackEnd));
   }
@@ -68,15 +83,17 @@ function MessageSender({ user }) {
       <div className="messageSender__bottom">
         <div className="messageSender__option">
           <VideocamIcon style={{ color: "red" }} />
-          <h3>Live</h3>
+          <h3 onClick={handleSubmitPhoto} type="submit">Live</h3>
         </div>
+        <form>
         <div className="messageSender__option">
           <PhotoLibraryIcon style={{ color: "green" }} />
-          <h3>Photo</h3>
+          <h3 onClick={handleSubmitPhoto} type="submit"> Photo </h3>
         </div>
+        </form>
         <div className="messageSender__option">
           <InsertEmoticonIcon style={{ color: "orange" }} />
-          <h3>Feeling</h3>
+          <h3 onClick={handleSubmitPhoto} type="submit">Feeling</h3>
         </div>
       </div>
     </div>
