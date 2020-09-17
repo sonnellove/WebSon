@@ -25,6 +25,9 @@ function Feed({ comments, posts, user }) {
         }
         getPost(variables);
 
+        // return function cleanup(){
+        //     dispatch()
+        // }
     }, [])
 
     const updateComment = (messageFromBackEnd) => {
@@ -50,7 +53,7 @@ function Feed({ comments, posts, user }) {
                 } else {
                     alert("Failed to get Post");
                 }
-            }, []);
+            });
     }
 
     const onLoadMore = () => {

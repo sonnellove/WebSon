@@ -26,7 +26,7 @@ function PostVideos({ userId, comments, user, profilePic, video, username, times
       }
     });
     setChildCommentNumber(commentNumber);
-  });
+  }, [comments.comments, videoId]);
 
 
   const onSubmit = (e) => {
@@ -69,7 +69,7 @@ function PostVideos({ userId, comments, user, profilePic, video, username, times
         </div>
         <div className="postVideos__delete">
           {user.userData.isAuth && userId === user.userData._id &&
-            < a onClick={DeleteHandler}>Delete Post</a>
+            <span onClick={DeleteHandler}>Delete Post</span>
           }
         </div>
       </div>

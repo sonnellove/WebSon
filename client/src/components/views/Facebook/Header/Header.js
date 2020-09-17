@@ -65,7 +65,7 @@ function Header({ history }) {
   return (
     <div className="header">
       <div className="header__left">
-        <img src={Logo} />
+        <img src={Logo} alt ={Logo}/>
         <SearchFeature
           refreshFunction={updateSearchTerms}
         />
@@ -92,7 +92,7 @@ function Header({ history }) {
           :
 
           <div className="header__option">
-            <a onClick={logoutHandler}>Logout</a>
+            <span onClick={logoutHandler}>Logout</span>
           </div>
         }
 

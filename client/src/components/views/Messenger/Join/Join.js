@@ -75,7 +75,7 @@ import React from 'react'
 function Join() {
   return (
     <div>
-      Not Yet Done!
+      Not Done Yet!
     </div>
   )
 }

@@ -27,7 +27,7 @@ function Post({ userId, comments, user, profilePic, image, username, timestamp, 
       }
     });
     setChildCommentNumber(commentNumber);
-  });
+  }, [comments.comments, postId]);
 
 
   const onSubmit = (e) => {
@@ -72,7 +72,7 @@ function Post({ userId, comments, user, profilePic, image, username, timestamp, 
         </div>
         <div className="post__delete">
           {user.userData.isAuth && userId === user.userData._id &&
-          < a onClick={DeleteHandler}>Delete Post</a>
+          <span onClick={DeleteHandler}>Delete Post</span>
           }
         </div>
       </div>
