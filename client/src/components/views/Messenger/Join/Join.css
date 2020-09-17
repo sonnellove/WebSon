@@ -59,6 +59,9 @@ html, body {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+  .demo{
+    margin-top: 100px;
+  }
   .joinOuterContainer {
     /* height: 100%; */
   }
@@ -72,3 +75,4 @@ html, body {
 button:focus {
   outline: 0;
 }
+

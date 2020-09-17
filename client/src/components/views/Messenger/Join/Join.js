@@ -71,10 +71,11 @@
 
 
 import React from 'react'
+import './Join.css';
 
 function Join() {
   return (
-    <div>
+    <div className="demo" >
       Not Done Yet!
     </div>
   )
